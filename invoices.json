@@ -1,0 +1,662 @@
+[
+  {
+    "plan": "basic",
+    "seats": 9,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 90.0,
+    "tax": 18.0,
+    "total": 108.0,
+    "issued_at": "2026-07-24T13:02:48.698984"
+  },
+  {
+    "plan": "basic",
+    "seats": 10,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 95.0,
+    "tax": 19.0,
+    "total": 114.0,
+    "issued_at": "2026-07-24T13:02:48.714157"
+  },
+  {
+    "plan": "basic",
+    "seats": 24,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 228.0,
+    "tax": 45.6,
+    "total": 273.6,
+    "issued_at": "2026-07-24T13:02:48.725473"
+  },
+  {
+    "plan": "basic",
+    "seats": 25,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 225.0,
+    "tax": 45.0,
+    "total": 270.0,
+    "issued_at": "2026-07-24T13:02:48.735645"
+  },
+  {
+    "plan": "basic",
+    "seats": 49,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 441.0,
+    "tax": 88.2,
+    "total": 529.2,
+    "issued_at": "2026-07-24T13:02:48.744544"
+  },
+  {
+    "plan": "basic",
+    "seats": 50,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 425.0,
+    "tax": 85.0,
+    "total": 510.0,
+    "issued_at": "2026-07-24T13:02:48.753359"
+  },
+  {
+    "plan": "basic",
+    "seats": 99,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 841.5,
+    "tax": 168.3,
+    "total": 1009.8,
+    "issued_at": "2026-07-24T13:02:48.762672"
+  },
+  {
+    "plan": "basic",
+    "seats": 100,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 800.0,
+    "tax": 160.0,
+    "total": 960.0,
+    "issued_at": "2026-07-24T13:02:48.771905"
+  },
+  {
+    "plan": "pro",
+    "seats": 9,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 225.0,
+    "tax": 45.0,
+    "total": 270.0,
+    "issued_at": "2026-07-24T13:02:48.781531"
+  },
+  {
+    "plan": "pro",
+    "seats": 10,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 237.5,
+    "tax": 47.5,
+    "total": 285.0,
+    "issued_at": "2026-07-24T13:02:48.790805"
+  },
+  {
+    "plan": "pro",
+    "seats": 24,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 570.0,
+    "tax": 114.0,
+    "total": 684.0,
+    "issued_at": "2026-07-24T13:02:48.800421"
+  },
+  {
+    "plan": "pro",
+    "seats": 25,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 562.5,
+    "tax": 112.5,
+    "total": 675.0,
+    "issued_at": "2026-07-24T13:02:48.810372"
+  },
+  {
+    "plan": "pro",
+    "seats": 49,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 1102.5,
+    "tax": 220.5,
+    "total": 1323.0,
+    "issued_at": "2026-07-24T13:02:48.820001"
+  },
+  {
+    "plan": "pro",
+    "seats": 50,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 1062.5,
+    "tax": 212.5,
+    "total": 1275.0,
+    "issued_at": "2026-07-24T13:02:48.829135"
+  },
+  {
+    "plan": "pro",
+    "seats": 99,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 2103.75,
+    "tax": 420.75,
+    "total": 2524.5,
+    "issued_at": "2026-07-24T13:02:48.838264"
+  },
+  {
+    "plan": "pro",
+    "seats": 100,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 2000.0,
+    "tax": 400.0,
+    "total": 2400.0,
+    "issued_at": "2026-07-24T13:02:48.848181"
+  },
+  {
+    "plan": "enterprise",
+    "seats": 9,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 450.0,
+    "tax": 90.0,
+    "total": 540.0,
+    "issued_at": "2026-07-24T13:02:48.857672"
+  },
+  {
+    "plan": "enterprise",
+    "seats": 10,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 475.0,
+    "tax": 95.0,
+    "total": 570.0,
+    "issued_at": "2026-07-24T13:02:48.867410"
+  },
+  {
+    "plan": "enterprise",
+    "seats": 25,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 1125.0,
+    "tax": 225.0,
+    "total": 1350.0,
+    "issued_at": "2026-07-24T13:02:48.877097"
+  },
+  {
+    "plan": "enterprise",
+    "seats": 50,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 2125.0,
+    "tax": 425.0,
+    "total": 2550.0,
+    "issued_at": "2026-07-24T13:02:48.886755"
+  },
+  {
+    "plan": "enterprise",
+    "seats": 100,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 4000.0,
+    "tax": 800.0,
+    "total": 4800.0,
+    "issued_at": "2026-07-24T13:02:48.896396"
+  },
+  {
+    "plan": "pro",
+    "seats": 24,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 570.0,
+    "tax": 114.0,
+    "total": 684.0,
+    "issued_at": "2026-07-24T13:02:48.905919"
+  },
+  {
+    "plan": "pro",
+    "seats": 25,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 562.5,
+    "tax": 112.5,
+    "total": 675.0,
+    "issued_at": "2026-07-24T13:02:48.914174"
+  },
+  {
+    "plan": "basic",
+    "seats": 10,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 95.0,
+    "tax": 19.0,
+    "total": 114.0,
+    "issued_at": "2026-07-24T13:02:48.923701"
+  },
+  {
+    "plan": "basic",
+    "seats": 10,
+    "billing_cycle": "monthly",
+    "region": "IE",
+    "net": 95.0,
+    "tax": 21.85,
+    "total": 116.85,
+    "issued_at": "2026-07-24T13:02:48.933274"
+  },
+  {
+    "plan": "basic",
+    "seats": 10,
+    "billing_cycle": "monthly",
+    "region": "DE",
+    "net": 95.0,
+    "tax": 18.05,
+    "total": 113.05,
+    "issued_at": "2026-07-24T13:02:48.942646"
+  },
+  {
+    "plan": "basic",
+    "seats": 10,
+    "billing_cycle": "monthly",
+    "region": "US",
+    "net": 95.0,
+    "tax": 0.0,
+    "total": 95.0,
+    "issued_at": "2026-07-24T13:02:48.952162"
+  },
+  {
+    "plan": "basic",
+    "seats": 10,
+    "billing_cycle": "annual",
+    "region": "UK",
+    "net": 1026.0,
+    "tax": 205.2,
+    "total": 1231.2,
+    "issued_at": "2026-07-24T13:02:48.961829"
+  },
+  {
+    "plan": "pro",
+    "seats": 25,
+    "billing_cycle": "annual",
+    "region": "UK",
+    "net": 6075.0,
+    "tax": 1215.0,
+    "total": 7290.0,
+    "issued_at": "2026-07-24T13:02:48.971646"
+  },
+  {
+    "plan": "enterprise",
+    "seats": 50,
+    "billing_cycle": "annual",
+    "region": "DE",
+    "net": 22950.0,
+    "tax": 4360.5,
+    "total": 27310.5,
+    "issued_at": "2026-07-24T13:02:48.981219"
+  },
+  {
+    "plan": "basic",
+    "seats": 10,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 95.0,
+    "tax": 19.0,
+    "total": 114.0,
+    "issued_at": "2026-07-24T13:02:48.994941"
+  },
+  {
+    "plan": "basic",
+    "seats": 10,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 52.1,
+    "tax": 10.42,
+    "total": 62.52,
+    "issued_at": "2026-07-24T13:02:49.004910"
+  },
+  {
+    "plan": "basic",
+    "seats": 10,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 3.06,
+    "tax": 0.61,
+    "total": 3.67,
+    "issued_at": "2026-07-24T13:02:49.037534"
+  },
+  {
+    "plan": "basic",
+    "seats": 9,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 90.0,
+    "tax": 18.0,
+    "total": 108.0,
+    "issued_at": "2026-07-24T13:03:04.672142"
+  },
+  {
+    "plan": "basic",
+    "seats": 10,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 95.0,
+    "tax": 19.0,
+    "total": 114.0,
+    "issued_at": "2026-07-24T13:03:04.683434"
+  },
+  {
+    "plan": "basic",
+    "seats": 24,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 228.0,
+    "tax": 45.6,
+    "total": 273.6,
+    "issued_at": "2026-07-24T13:03:04.694832"
+  },
+  {
+    "plan": "basic",
+    "seats": 25,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 225.0,
+    "tax": 45.0,
+    "total": 270.0,
+    "issued_at": "2026-07-24T13:03:04.706061"
+  },
+  {
+    "plan": "basic",
+    "seats": 49,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 441.0,
+    "tax": 88.2,
+    "total": 529.2,
+    "issued_at": "2026-07-24T13:03:04.716126"
+  },
+  {
+    "plan": "basic",
+    "seats": 50,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 425.0,
+    "tax": 85.0,
+    "total": 510.0,
+    "issued_at": "2026-07-24T13:03:04.726246"
+  },
+  {
+    "plan": "basic",
+    "seats": 99,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 841.5,
+    "tax": 168.3,
+    "total": 1009.8,
+    "issued_at": "2026-07-24T13:03:04.736731"
+  },
+  {
+    "plan": "basic",
+    "seats": 100,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 800.0,
+    "tax": 160.0,
+    "total": 960.0,
+    "issued_at": "2026-07-24T13:03:04.747096"
+  },
+  {
+    "plan": "pro",
+    "seats": 9,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 225.0,
+    "tax": 45.0,
+    "total": 270.0,
+    "issued_at": "2026-07-24T13:03:04.757290"
+  },
+  {
+    "plan": "pro",
+    "seats": 10,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 237.5,
+    "tax": 47.5,
+    "total": 285.0,
+    "issued_at": "2026-07-24T13:03:04.767768"
+  },
+  {
+    "plan": "pro",
+    "seats": 24,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 570.0,
+    "tax": 114.0,
+    "total": 684.0,
+    "issued_at": "2026-07-24T13:03:04.777830"
+  },
+  {
+    "plan": "pro",
+    "seats": 25,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 562.5,
+    "tax": 112.5,
+    "total": 675.0,
+    "issued_at": "2026-07-24T13:03:04.787988"
+  },
+  {
+    "plan": "pro",
+    "seats": 49,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 1102.5,
+    "tax": 220.5,
+    "total": 1323.0,
+    "issued_at": "2026-07-24T13:03:04.798113"
+  },
+  {
+    "plan": "pro",
+    "seats": 50,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 1062.5,
+    "tax": 212.5,
+    "total": 1275.0,
+    "issued_at": "2026-07-24T13:03:04.808316"
+  },
+  {
+    "plan": "pro",
+    "seats": 99,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 2103.75,
+    "tax": 420.75,
+    "total": 2524.5,
+    "issued_at": "2026-07-24T13:03:04.818556"
+  },
+  {
+    "plan": "pro",
+    "seats": 100,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 2000.0,
+    "tax": 400.0,
+    "total": 2400.0,
+    "issued_at": "2026-07-24T13:03:04.829033"
+  },
+  {
+    "plan": "enterprise",
+    "seats": 9,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 450.0,
+    "tax": 90.0,
+    "total": 540.0,
+    "issued_at": "2026-07-24T13:03:04.839293"
+  },
+  {
+    "plan": "enterprise",
+    "seats": 10,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 475.0,
+    "tax": 95.0,
+    "total": 570.0,
+    "issued_at": "2026-07-24T13:03:04.849486"
+  },
+  {
+    "plan": "enterprise",
+    "seats": 25,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 1125.0,
+    "tax": 225.0,
+    "total": 1350.0,
+    "issued_at": "2026-07-24T13:03:04.859617"
+  },
+  {
+    "plan": "enterprise",
+    "seats": 50,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 2125.0,
+    "tax": 425.0,
+    "total": 2550.0,
+    "issued_at": "2026-07-24T13:03:04.870175"
+  },
+  {
+    "plan": "enterprise",
+    "seats": 100,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 4000.0,
+    "tax": 800.0,
+    "total": 4800.0,
+    "issued_at": "2026-07-24T13:03:04.880199"
+  },
+  {
+    "plan": "pro",
+    "seats": 24,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 570.0,
+    "tax": 114.0,
+    "total": 684.0,
+    "issued_at": "2026-07-24T13:03:04.890413"
+  },
+  {
+    "plan": "pro",
+    "seats": 25,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 562.5,
+    "tax": 112.5,
+    "total": 675.0,
+    "issued_at": "2026-07-24T13:03:04.899378"
+  },
+  {
+    "plan": "basic",
+    "seats": 10,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 95.0,
+    "tax": 19.0,
+    "total": 114.0,
+    "issued_at": "2026-07-24T13:03:04.909663"
+  },
+  {
+    "plan": "basic",
+    "seats": 10,
+    "billing_cycle": "monthly",
+    "region": "IE",
+    "net": 95.0,
+    "tax": 21.85,
+    "total": 116.85,
+    "issued_at": "2026-07-24T13:03:04.920034"
+  },
+  {
+    "plan": "basic",
+    "seats": 10,
+    "billing_cycle": "monthly",
+    "region": "DE",
+    "net": 95.0,
+    "tax": 18.05,
+    "total": 113.05,
+    "issued_at": "2026-07-24T13:03:04.930679"
+  },
+  {
+    "plan": "basic",
+    "seats": 10,
+    "billing_cycle": "monthly",
+    "region": "US",
+    "net": 95.0,
+    "tax": 0.0,
+    "total": 95.0,
+    "issued_at": "2026-07-24T13:03:04.940847"
+  },
+  {
+    "plan": "basic",
+    "seats": 10,
+    "billing_cycle": "annual",
+    "region": "UK",
+    "net": 1026.0,
+    "tax": 205.2,
+    "total": 1231.2,
+    "issued_at": "2026-07-24T13:03:04.950911"
+  },
+  {
+    "plan": "pro",
+    "seats": 25,
+    "billing_cycle": "annual",
+    "region": "UK",
+    "net": 6075.0,
+    "tax": 1215.0,
+    "total": 7290.0,
+    "issued_at": "2026-07-24T13:03:04.961593"
+  },
+  {
+    "plan": "enterprise",
+    "seats": 50,
+    "billing_cycle": "annual",
+    "region": "DE",
+    "net": 22950.0,
+    "tax": 4360.5,
+    "total": 27310.5,
+    "issued_at": "2026-07-24T13:03:04.972666"
+  },
+  {
+    "plan": "basic",
+    "seats": 10,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 95.0,
+    "tax": 19.0,
+    "total": 114.0,
+    "issued_at": "2026-07-24T13:03:04.985663"
+  },
+  {
+    "plan": "basic",
+    "seats": 10,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 52.1,
+    "tax": 10.42,
+    "total": 62.52,
+    "issued_at": "2026-07-24T13:03:04.996669"
+  },
+  {
+    "plan": "basic",
+    "seats": 10,
+    "billing_cycle": "monthly",
+    "region": "UK",
+    "net": 3.06,
+    "tax": 0.61,
+    "total": 3.67,
+    "issued_at": "2026-07-24T13:03:05.007542"
+  }
+]
