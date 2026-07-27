@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -m pytest tests/v1/test_pricing_rules.py -v)",
+      "Bash(git commit -m 'Add v1 foundation: Clock, Repository, and Strategy patterns *)"
+    ]
+  }
+}
