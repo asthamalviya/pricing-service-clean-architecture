@@ -1,0 +1,252 @@
+#!/bin/bash
+# Screenshot Guide - Run these commands and screenshot your terminal
+
+echo "=================================================="
+echo "SCREENSHOT GUIDE - Module 7 Submission"
+echo "=================================================="
+echo ""
+echo "For each command below:"
+echo "1. Run the command in your terminal"
+echo "2. Take a screenshot (Cmd+Shift+4 on Mac)"
+echo "3. Save with the suggested filename"
+echo ""
+echo "=================================================="
+echo ""
+
+echo "📸 SCREENSHOT 1: All 90 Tests Passing"
+echo "Command: source .venv/bin/activate && PYTHONPATH=. pytest tests/ -v"
+echo "Filename: screenshot_01_tests_passing.png"
+echo ""
+read -p "Press Enter to run this command..."
+source .venv/bin/activate && PYTHONPATH=. pytest tests/ -v
+echo ""
+echo "✅ Now take a screenshot of this output!"
+read -p "Press Enter when done to continue..."
+echo ""
+
+echo "=================================================="
+echo ""
+echo "📸 SCREENSHOT 2: 99% Coverage Report"
+echo "Command: source .venv/bin/activate && PYTHONPATH=. pytest tests/ --cov=. --cov-report=term-missing"
+echo "Filename: screenshot_02_coverage.png"
+echo ""
+read -p "Press Enter to run this command..."
+source .venv/bin/activate && PYTHONPATH=. pytest tests/ --cov=. --cov-report=term-missing
+echo ""
+echo "✅ Now take a screenshot of the coverage table!"
+read -p "Press Enter when done to continue..."
+echo ""
+
+echo "=================================================="
+echo ""
+echo "📸 SCREENSHOT 3: HTML Coverage Report"
+echo "This requires opening in a browser"
+echo "Command: open htmlcov/index.html"
+echo "Filename: screenshot_03_html_coverage.png"
+echo ""
+read -p "Press Enter to open the browser..."
+open htmlcov/index.html
+echo ""
+echo "✅ Take a screenshot of the HTML coverage page in your browser!"
+read -p "Press Enter when done to continue..."
+echo ""
+
+echo "=================================================="
+echo ""
+echo "📸 SCREENSHOT 4: Server Startup"
+echo "I'll start the server in the background"
+echo "Filename: screenshot_04_server_startup.png"
+echo ""
+read -p "Press Enter to start the server..."
+source .venv/bin/activate && uvicorn main_v1:app --reload &
+SERVER_PID=$!
+sleep 3
+echo ""
+echo "✅ Take a screenshot showing the server startup messages!"
+read -p "Press Enter when done to continue..."
+echo ""
+
+echo "=================================================="
+echo ""
+echo "📸 SCREENSHOT 5: Swagger UI"
+echo "Opening browser to http://127.0.0.1:8000/docs"
+echo "Filename: screenshot_05_swagger_ui.png"
+echo ""
+read -p "Press Enter to open Swagger UI..."
+open http://127.0.0.1:8000/docs
+echo ""
+echo "✅ Take a screenshot of the Swagger UI in your browser!"
+read -p "Press Enter when done to continue..."
+echo ""
+
+echo "=================================================="
+echo ""
+echo "📸 SCREENSHOT 6: Health Endpoint"
+echo "Command: curl http://127.0.0.1:8000/health | python3 -m json.tool"
+echo "Filename: screenshot_06_health_endpoint.png"
+echo ""
+read -p "Press Enter to run this command..."
+curl -s http://127.0.0.1:8000/health | python3 -m json.tool
+echo ""
+echo "✅ Take a screenshot of this JSON response!"
+read -p "Press Enter when done to continue..."
+echo ""
+
+echo "=================================================="
+echo ""
+echo "📸 SCREENSHOT 7: Successful Quote"
+echo "Command: curl -X POST http://127.0.0.1:8000/quote ..."
+echo "Filename: screenshot_07_successful_quote.png"
+echo ""
+read -p "Press Enter to run this command..."
+curl -s -X POST http://127.0.0.1:8000/quote \
+  -H "Content-Type: application/json" \
+  -d '{"plan": "pro", "seats": 10, "billing_cycle": "monthly", "region": "UK"}' | python3 -m json.tool
+echo ""
+echo "✅ Take a screenshot of this quote calculation!"
+read -p "Press Enter when done to continue..."
+echo ""
+
+echo "=================================================="
+echo ""
+echo "📸 SCREENSHOT 8: Validation Error (422)"
+echo "Command: curl -X POST http://127.0.0.1:8000/quote ... (negative seats)"
+echo "Filename: screenshot_08_validation_error.png"
+echo ""
+read -p "Press Enter to run this command..."
+curl -s -X POST http://127.0.0.1:8000/quote \
+  -H "Content-Type: application/json" \
+  -d '{"plan": "pro", "seats": -5, "billing_cycle": "monthly", "region": "UK"}' | python3 -m json.tool
+echo ""
+echo "✅ Take a screenshot showing the 422 validation error!"
+read -p "Press Enter when done to continue..."
+echo ""
+
+echo "=================================================="
+echo ""
+echo "📸 SCREENSHOT 9: Business Logic Error (400)"
+echo "Command: curl -X POST http://127.0.0.1:8000/quote ... (unknown plan)"
+echo "Filename: screenshot_09_business_error.png"
+echo ""
+read -p "Press Enter to run this command..."
+curl -s -X POST http://127.0.0.1:8000/quote \
+  -H "Content-Type: application/json" \
+  -d '{"plan": "premium", "seats": 10, "billing_cycle": "monthly", "region": "UK"}' | python3 -m json.tool
+echo ""
+echo "✅ Take a screenshot showing the 400 business error!"
+read -p "Press Enter when done to continue..."
+echo ""
+
+echo "=================================================="
+echo ""
+echo "📸 SCREENSHOT 10: Comprehensive API Tests"
+echo "Command: ./test_api.sh"
+echo "Filename: screenshot_10_api_tests.png"
+echo ""
+read -p "Press Enter to run this command..."
+./test_api.sh
+echo ""
+echo "✅ Take a screenshot of the full test output!"
+read -p "Press Enter when done to continue..."
+echo ""
+
+echo "=================================================="
+echo ""
+echo "📸 SCREENSHOT 11: Pricing Anomaly"
+echo "Command: Testing 24 seats vs 25 seats"
+echo "Filename: screenshot_11_pricing_anomaly.png"
+echo ""
+read -p "Press Enter to run this command..."
+echo "=== 24 SEATS ==="
+curl -s -X POST http://127.0.0.1:8000/quote \
+  -H "Content-Type: application/json" \
+  -d '{"plan": "pro", "seats": 24, "billing_cycle": "monthly", "region": "UK"}' | python3 -m json.tool
+echo ""
+echo "=== 25 SEATS (CHEAPER!) ==="
+curl -s -X POST http://127.0.0.1:8000/quote \
+  -H "Content-Type: application/json" \
+  -d '{"plan": "pro", "seats": 25, "billing_cycle": "monthly", "region": "UK"}' | python3 -m json.tool
+echo ""
+echo "✅ Take a screenshot showing both calculations side by side!"
+read -p "Press Enter when done to continue..."
+echo ""
+
+echo "=================================================="
+echo ""
+echo "📸 SCREENSHOT 12: Project Structure"
+echo "Command: tree -L 2 (or alternative)"
+echo "Filename: screenshot_12_project_structure.png"
+echo ""
+read -p "Press Enter to run this command..."
+find . -maxdepth 2 -not -path '*/.*' -not -path '*/__pycache__*' -not -path '*/htmlcov*' | head -50
+echo ""
+echo "✅ Take a screenshot of the project structure!"
+read -p "Press Enter when done to continue..."
+echo ""
+
+echo "=================================================="
+echo ""
+echo "📸 SCREENSHOT 13: Git Commit History"
+echo "Command: git log --oneline --all --graph"
+echo "Filename: screenshot_13_git_history.png"
+echo ""
+read -p "Press Enter to run this command..."
+git log --oneline --all --graph -10
+echo ""
+echo "✅ Take a screenshot of the git history!"
+read -p "Press Enter when done to continue..."
+echo ""
+
+echo "=================================================="
+echo ""
+echo "📸 SCREENSHOT 14: Clean v1 Code Example"
+echo "Command: head -50 v1/pricing_service.py"
+echo "Filename: screenshot_14_clean_code.png"
+echo ""
+read -p "Press Enter to run this command..."
+head -50 v1/pricing_service.py
+echo ""
+echo "✅ Take a screenshot of the clean code!"
+read -p "Press Enter when done to continue..."
+echo ""
+
+echo "=================================================="
+echo ""
+echo "📸 SCREENSHOT 15: v0 vs v1 Comparison"
+echo "Command: wc -l main.py v1/*.py"
+echo "Filename: screenshot_15_v0_vs_v1.png"
+echo ""
+read -p "Press Enter to run this command..."
+wc -l main.py v1/*.py
+echo ""
+echo "✅ Take a screenshot of the line count comparison!"
+read -p "Press Enter when done to continue..."
+echo ""
+
+echo "=================================================="
+echo ""
+echo "📸 SCREENSHOT 16: Documentation Files"
+echo "Command: ls -lh docs/*.md *.md"
+echo "Filename: screenshot_16_documentation.png"
+echo ""
+read -p "Press Enter to run this command..."
+ls -lh docs/*.md *.md 2>/dev/null | grep -v "^total"
+echo ""
+echo "✅ Take a screenshot of the documentation list!"
+read -p "Press Enter when done to continue..."
+echo ""
+
+echo "=================================================="
+echo ""
+echo "🎉 ALL COMMANDS COMPLETE!"
+echo ""
+echo "Stopping the server..."
+kill $SERVER_PID 2>/dev/null
+echo ""
+echo "=================================================="
+echo "NEXT STEPS:"
+echo "1. Review all 16 screenshots you just captured"
+echo "2. Rename them using the suggested filenames"
+echo "3. Insert them into your submission report"
+echo "4. Add captions from SCREENSHOTS_CAPTURED.md"
+echo "=================================================="
