@@ -1,1 +1,6 @@
 Module_7_Portfolio_Report.docx
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.coverage
