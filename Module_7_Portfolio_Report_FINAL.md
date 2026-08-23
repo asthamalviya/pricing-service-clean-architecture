@@ -344,7 +344,7 @@ Communication with technical stakeholders was structured through the architectur
 
 This approach to documentation ensures that architectural decisions are not lost to institutional memory. A team member reviewing the code in six months can examine the architectural decision record and understand not just what the architecture is, but why it was chosen and what trade-offs were accepted.
 
-**Test Evidence:** The test suite itself communicates architectural quality to technical stakeholders. The 90-test portfolio demonstrates that the separation of concerns in v1 is not theoretical. Unit tests prove that individual pricing strategies can be exercised without HTTP. Service tests prove that `PricingService` correctly orchestrates repositories and rules. Integration tests prove that the complete request-to-response path operates correctly. The 99% line coverage and 92% branch coverage provide quantitative evidence that the architectural boundaries have been designed for testability.
+**Test Evidence:** The test suite itself communicates architectural quality to technical stakeholders. The 90-test portfolio demonstrates that the separation of concerns in v1 is not theoretical. Unit tests prove that individual pricing strategies can be exercised without HTTP. Service tests prove that `PricingService` correctly orchestrates repositories and rules. Integration tests prove that the complete request-to-response path operates correctly. The 99% line coverage and 92% branch coverage provide quantitative evidence that the resulting architectural boundaries support extensive automated testing.
 
 Boundary-value tests targeting the 9/10, 24/25, 49/50 and 99/100 seat thresholds provide concrete evidence that the pricing-rule abstraction has made discount logic explicit and testable. The characterisation tests establish that the refactoring has not unintentionally changed behaviour.
 
@@ -401,9 +401,9 @@ In a collaborative team setting, each ADR in Section 2.2–2.3 would follow this
 **Evidence of Design Rationale for Peer Review:**
 
 The test evidence (Section 3) serves as proof to support design claims during peer review:
-- A peer challenging the Service Layer decision can run the unit tests and observe directly that pricing logic is testable independently of HTTP.
-- A peer challenging the Repository decision can replace `FileConfigRepository` with `InMemoryConfigRepository` and observe that tests pass without modification.
-- A peer challenging the Strategy Pattern can examine `pricing_rules.py` and verify that individual discount thresholds are independently testable without HTTP.
+- A peer challenging the Service Layer decision can run the unit tests and observe directly that pricing logic is testable independently of HTTP (lines 34–81 of `pricing_service.py` exercised by 19 service tests).
+- A peer challenging the Repository decision can replace `FileConfigRepository` with `InMemoryConfigRepository` and observe that tests pass without modification (repository pattern verified by 10 dedicated repository tests).
+- A peer challenging the Strategy Pattern can examine `pricing_rules.py` and verify that individual discount thresholds are independently testable without HTTP (10 pricing-rule unit tests target boundary values explicitly).
 
 This evidence-based approach transforms architectural discussion from opinion ("I think separation of concerns is important") to verifiable claims ("Here is proof that the service logic can be tested in isolation").
 
@@ -413,7 +413,7 @@ Beyond peer developers, the project would present findings to non-technical stak
 
 - **Product/Finance stakeholders** would review the pricing anomaly (24 Pro: £684, 25 Pro: £675) with the explicit understanding that this is a business policy decision requiring stakeholder judgment, not a defect the developer should fix unilaterally.
 - **Operations stakeholders** would review the identified scalability limitation (file-based persistence unsuitable for high-volume concurrent writes) as evidence for future infrastructure planning, not as criticism of the current implementation.
-- **Quality/Compliance stakeholders** would review the 99% coverage and boundary-value test evidence as assurance that pricing changes can be verified reliably.
+- **Quality/Compliance stakeholders** would review the 99% coverage and boundary-value test evidence (Section 3.7–3.8) as assurance that pricing changes can be verified through extensive automated testing.
 
 By documenting these stakeholder perspectives, the ADRs become contracts between development and the business: "we identified these quality gaps, we applied these solutions with these trade-offs, and we produced this evidence. Here is what still requires business decision or future investment."
 
@@ -515,15 +515,12 @@ Software Engineering Institute (SEI). (2021). *Technical Debt: Definition, Origi
 ## Appendices
 
 ### Appendix A: Test Results Summary
-```
-pytest tests/ -v
-===================== 90 passed in 0.21s =====================
 
-Coverage:
-- v0: 99% (85/85 lines)
-- v1: 97% (242/252 lines)
-- Total: 99% line coverage, 92% branch coverage
-```
+The automated test suite executes 90 tests in 0.21 seconds with the following coverage:
+
+- v0 characterisation code: 99% line coverage (85/85 lines)
+- v1 production code: 97% line coverage (242/252 lines)
+- Overall project: 99% line coverage, 92% branch coverage
 
 ### Appendix B: v0 vs v1 Architectural Structure
 
@@ -702,6 +699,3 @@ Anomaly Detected:
 This behaviour is preserved in v1 without modification, providing evidence of the pricing anomaly for business review. The test demonstrates that both values are reproducible and deterministic across the refactoring.
 
 ---
-
-**Word count: [CALCULATE FROM FINAL DOCUMENT]**  
-**Date submitted: August 2026**
