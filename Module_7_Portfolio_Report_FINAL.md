@@ -283,7 +283,7 @@ This demonstrates why testing is not simply a mechanism for producing green buil
 
 ### 3.8 Test Results and Coverage
 
-The project records a total automated test suite of **90 tests**, which executes in **0.21 seconds**, with the coverage evidence reporting approximately **99% overall line coverage** and **92% branch coverage**. As shown in **Figure 3** (Appendix D), the test suite comprises 34 characterisation tests, 13 pricing-rule unit tests, 17 service tests, 14 integration tests and 10 repository tests, executing across 5 test files.
+The project records a total automated test suite of **90 tests**, which executes in **0.21 seconds**, with the coverage evidence reporting approximately **99% overall line coverage** and **92% branch coverage**. As shown in **Figure 3** (Appendix D), the test suite comprises 34 characterisation tests, 10 pricing-rule unit tests, 19 service-layer tests, 14 API integration tests, 10 repository tests and 3 clock tests, executing across 6 test files.
 
 The more detailed coverage analysis reports **97% coverage for v1 production code**, with the principal business-logic components receiving full coverage. The remaining uncovered paths are primarily associated with infrastructure and exceptional conditions.
 
@@ -354,7 +354,7 @@ Boundary-value tests targeting the 9/10, 24/25, 49/50 and 99/100 seat thresholds
 
 Test discipline is applied consistently through the test pyramid structure: isolated unit tests providing fast feedback on individual components, service tests verifying orchestration, and integration tests verifying the external contract. Deterministic testing through clock injection ensures that test results are reproducible rather than dependent on machine state.
 
-Code standards are applied through clean code practices: functions are short (under 25 lines), names are explicit, and business rules are visible rather than embedded in conditional branches. Magic numbers have been eliminated in favour of explicit strategy components and configuration.
+Code standards are applied through clean code practices: the main service function is 48 lines compared to v0's 88-line handler, names are explicit, and business rules are visible rather than embedded in conditional branches. Magic numbers have been eliminated in favour of explicit strategy components and configuration.
 
 The technical communication therefore does not require formal peer review sessions to be effective. Instead, the architecture, tests and documentation together provide a complete case for the design decisions and their quality implications.
 
@@ -380,7 +380,7 @@ The project applied professional software engineering standards consistently acr
 
 **Documentation:** Architectural decisions are recorded with both their rationale and rejected alternatives, providing traceability for future developers.
 
-**Code Quality:** Responsibilities are separated into focused components, business rules are explicit, names are descriptive and unnecessary magic numbers are avoided.
+**Code Quality:** Responsibilities are separated into focused components with the principal service function reduced to 48 lines (compared to v0's 88-line handler), business rules are explicit, names are descriptive and unnecessary magic numbers are avoided.
 
 **Professional Honesty:** Limitations are explicitly documented, including file-based concurrency and scalability constraints and the unresolved pricing anomaly. The report also distinguishes between code coverage, behavioural evidence and actual business correctness rather than treating high coverage as proof that the system is defect-free.
 
@@ -594,7 +594,7 @@ HTTP Request Handler (90 lines)
 ```
 HTTP Boundary (FastAPI, 14 lines)
     ↓
-PricingService (Orchestration, 25 lines)
+PricingService (Orchestration, 48 lines main function)
     ├── PricingRules (Strategy, 59 lines)
     │   ├── PlanPricer (8 lines)
     │   ├── VolumeDiscountStrategy (12 lines)
@@ -618,24 +618,39 @@ The separation creates explicit testing boundaries: business logic can be verifi
 ```
 pytest tests/ -v
 
-PASSED tests/test_v0_characterisation.py::test_basic_plan_pricing
-PASSED tests/test_v0_characterisation.py::test_pro_plan_pricing
-PASSED tests/test_v0_characterisation.py::test_enterprise_plan_pricing
-... [20 more characterisation tests]
-PASSED tests/v1/test_pricing_rules.py::test_plan_pricer_basic
-PASSED tests/v1/test_pricing_rules.py::test_volume_discount_5_percent
-... [12 more pricing rule tests]
-PASSED tests/v1/test_pricing_service.py::test_service_orchestration
-PASSED tests/v1/test_pricing_service.py::test_service_fixed_clock
-... [15 more service tests]
-PASSED tests/v1/test_api_integration.py::test_quote_valid_request
-PASSED tests/v1/test_api_integration.py::test_24_seats_boundary
-PASSED tests/v1/test_api_integration.py::test_25_seats_boundary
-... [11 more integration tests]
-PASSED tests/v1/test_repositories.py::test_file_config_load
-... [9 more repository tests]
+tests/test_v0_characterisation.py::test_basic_plan_pricing PASSED
+tests/test_v0_characterisation.py::test_pro_plan_pricing PASSED
+... [32 more characterisation tests]
+
+tests/v1/test_pricing_rules.py::test_plan_pricer_basic PASSED
+tests/v1/test_pricing_rules.py::test_volume_discount_0_percent PASSED
+... [8 more pricing rule tests]
+
+tests/v1/test_pricing_service.py::test_service_orchestration PASSED
+tests/v1/test_pricing_service.py::test_service_fixed_clock PASSED
+... [17 more service tests]
+
+tests/v1/test_api_integration.py::test_quote_valid_request PASSED
+tests/v1/test_api_integration.py::test_24_vs_25_seats_anomaly PASSED
+... [12 more integration tests]
+
+tests/v1/test_repositories.py::test_file_config_load PASSED
+tests/v1/test_repositories.py::test_memory_invoice_save PASSED
+... [8 more repository tests]
+
+tests/v1/test_clock.py::test_system_clock PASSED
+tests/v1/test_clock.py::test_fixed_clock PASSED
 
 ========================== 90 passed in 0.21s ==========================
+
+Test Breakdown by Category:
+- Characterisation tests (v0 behaviour): 34
+- Pricing rules (Strategy Pattern): 10
+- Service layer (orchestration): 19
+- API integration (HTTP boundary): 14
+- Repository patterns (I/O abstraction): 10
+- Clock injection (deterministic time): 3
+Total: 90 tests across 6 test files
 
 Coverage Report:
 - v0 code: 99% line coverage (85/85 lines)
@@ -644,7 +659,7 @@ Coverage Report:
 ```
 
 The test suite demonstrates that:
-- All 34 characterisation tests pass, proving behavioural equivalence
+- All 34 characterisation tests pass, providing evidence of behavioural equivalence for the 34 scenarios captured from v0
 - Boundary-value tests (9/10, 24/25, 49/50, 99/100 seats) execute explicitly
 - Service and integration tests verify orchestration and API contract
 - Execution time (0.21 seconds) supports fast feedback during development
@@ -654,37 +669,37 @@ The test suite demonstrates that:
 **Figure 4: Boundary-Value Test Evidence—24/25 Seat Anomaly**
 
 ```
-Test: test_24_seats_boundary
+Test: test_24_vs_25_seats_anomaly
 Input: plan='pro', seats=24, region='UK', billing_cycle='monthly'
 Expected output: £684.00
 
 Calculation:
-  Unit price: £23
-  Subtotal: 23 × 24 = £552
-  Discount applied: 10% (≥ 24 seats threshold)
-  Discounted: £552 × 0.90 = £496.80
-  Tax (UK): £496.80 × 0.20 = £99.36
-  Total: £596.16 ✓ PASS
+  Unit price: £25 (from pricing_config.json)
+  Subtotal: 25 × 24 = £600
+  Discount applied: 5% (≥ 24 seats threshold per discount tier)
+  Discounted: £600 × 0.95 = £570
+  Tax (UK): £570 × 0.20 = £114
+  Total: £570 + £114 = £684.00 ✓ PASS
 
-Test: test_25_seats_boundary
+Same input with 25 seats:
 Input: plan='pro', seats=25, region='UK', billing_cycle='monthly'
 Expected output: £675.00
 
 Calculation:
-  Unit price: £23
-  Subtotal: 23 × 25 = £575
-  Discount applied: 15% (≥ 25 seats threshold)
-  Discounted: £575 × 0.85 = £488.75
-  Tax (UK): £488.75 × 0.20 = £97.75
-  Total: £586.50 ✓ PASS
+  Unit price: £25
+  Subtotal: 25 × 25 = £625
+  Discount applied: 10% (≥ 25 seats threshold per discount tier)
+  Discounted: £625 × 0.90 = £562.50
+  Tax (UK): £562.50 × 0.20 = £112.50
+  Total: £562.50 + £112.50 = £675.00 ✓ PASS
 
 Anomaly Detected:
-  24 seats at 10% discount: £596.16 total
-  25 seats at 15% discount: £586.50 total
-  ★ 25 seats produces £9.66 LOWER total than 24 seats
+  24 seats at 5% discount: £684.00 total
+  25 seats at 10% discount: £675.00 total
+  ★ 25 seats produces £9.00 LOWER total than 24 seats
 ```
 
-This behaviour is preserved in v1 without modification, allowing the business to determine whether the discount policy is correct. The test proves that both values are reproducible and deterministic.
+This behaviour is preserved in v1 without modification, providing evidence of the pricing anomaly for business review. The test demonstrates that both values are reproducible and deterministic across the refactoring.
 
 ---
 
