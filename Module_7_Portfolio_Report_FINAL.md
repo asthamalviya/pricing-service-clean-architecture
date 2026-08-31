@@ -377,37 +377,25 @@ The test suite demonstrates that:
 
 **Figure 4: Boundary-Value Test Evidence—24/25 Seat Anomaly**
 
-```
-Test: test_24_vs_25_seats_anomaly
-Input: plan='pro', seats=24, region='UK', billing_cycle='monthly'
-Expected output: £684.00
+| Metric | 24 Seats | 25 Seats | Impact |
+|--------|----------|----------|--------|
+| Subtotal | £600.00 | £625.00 | +£25.00 |
+| Discount Rate | 5% | 10% | +5% |
+| After Discount | £570.00 | £562.50 | -£7.50 |
+| **Final Total** | **£684.00** | **£675.00** | **-£9.00 ⚠️** |
 
-Calculation:
-  Unit price: £25 (from pricing_config.json)
-  Subtotal: 25 × 24 = £600
-  Discount applied: 5% (≥ 24 seats threshold per discount tier)
-  Discounted: £600 × 0.95 = £570
-  Tax (UK): £570 × 0.20 = £114
-  Total: £570 + £114 = £684.00 ✓ PASS
+**Anomaly Detected:** Adding one seat reduces total cost by £9.00. This occurs because the 10% discount at 25+ seats applies to the larger subtotal (£625), producing a greater discount value (£62.50) than the 5% discount on the smaller subtotal (£30.00). The increased discount exceeds the additional base price, resulting in a lower final cost.
 
-Same input with 25 seats:
-Input: plan='pro', seats=25, region='UK', billing_cycle='monthly'
-Expected output: £675.00
-
-Calculation:
-  Unit price: £25
-  Subtotal: 25 × 25 = £625
-  Discount applied: 10% (≥ 25 seats threshold per discount tier)
-  Discounted: £625 × 0.90 = £562.50
-  Tax (UK): £562.50 × 0.20 = £112.50
-  Total: £562.50 + £112.50 = £675.00 ✓ PASS
-
-Anomaly Detected:
-  24 seats at 5% discount: £684.00 total
-  25 seats at 10% discount: £675.00 total
-  ★ 25 seats produces £9.00 LOWER total than 24 seats
-```
-
-This behaviour is preserved in v1 without modification, providing evidence of the pricing anomaly for business review. The test demonstrates that both values are reproducible and deterministic across the refactoring.
+**Testing Evidence:** This behaviour is captured and reproduced deterministically in v1 test suite (test_24_vs_25_seats_anomaly). The anomaly is preserved without modification, allowing business stakeholders to determine whether the discount policy is correct. The test proves both values are reproducible and deterministic across the refactoring.
 
 ---
+
+**Interactive Figure References**
+
+Note: Enhanced interactive visualizations of all four figures are available as standalone HTML files:
+- Figure 1: v0 Handler Coupling (Interactive diagram)
+- Figure 2: v0 vs v1 Architecture Comparison (Side-by-side architecture visualization)
+- Figure 3: Automated Test Suite Results (Interactive test metrics and coverage charts)
+- Figure 4: Boundary-Value Test Evidence (Interactive pricing calculation breakdown)
+
+These files provide richer visual representation and can be opened in any web browser.
