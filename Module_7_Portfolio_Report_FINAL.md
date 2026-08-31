@@ -4,7 +4,7 @@
 **Student Name:** Astha Malviya  
 **Project Title:** QuickQuote Pricing API: v0 to v1 Refactoring  
 **Date:** August 2026  
-**Word Count:** 4,000 words (Main Report including Sections 1–5; excludes references and appendices per university guidelines)
+**Word Count:** 3,261 words (Main Report Sections 1–5 only; excludes References and Appendices per university guidelines)
 
 ---
 
@@ -411,3 +411,19 @@ Anomaly Detected:
 This behaviour is preserved in v1 without modification, providing evidence of the pricing anomaly for business review. The test demonstrates that both values are reproducible and deterministic across the refactoring.
 
 ---
+
+## References
+
+Gamma, E., Helm, R., Johnson, R. and Vlissides, J. (1994) *Design Patterns: Elements of Reusable Object-Oriented Software*. Addison-Wesley.
+
+Liskov, B. (1987) 'Data abstraction and hierarchy', ACM SIGPLAN Notices, 23(5), pp. 17–34.
+
+Martin, R.C. (2017) *Clean Architecture: A Craftsman's Guide to Software Structure and Design*. Prentice Hall.
+
+Martin, R.C. (2008) *Clean Code: A Handbook of Agile Software Craftsmanship*. Prentice Hall.
+
+Nygard, M.T. (2007) *Release It!: Design and Deploy Production-Ready Software*. Pragmatic Programmers.
+
+Software Engineering Institute (SEI) (2016) 'Technical Debt: A Primer', Carnegie Mellon University. Available at: https://www.sei.cmu.edu/
+
+ISO/IEC (2023) 'ISO/IEC 25010:2023 Systems and software engineering – Product quality – Measurement functions and reference model'. International Organization for Standardization.
