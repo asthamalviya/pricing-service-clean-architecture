@@ -1,10 +1,14 @@
 # Software Quality: Design and Testing Practice
 ## Module 7 Portfolio Project Report
 
-**Student Name:** Astha Malviya  
-**Project Title:** QuickQuote Pricing API: v0 to v1 Refactoring  
-**Date:** August 2026  
-**Word Count:** 3,950 words (Main Report Sections 1–5 only; excludes References and Appendices per university guidelines)
+**Student:** Astha Malviya  
+**Repository:** [github.com/asthamalviya/pricing-service-clean-architecture](https://github.com/asthamalviya/pricing-service-clean-architecture)  
+
+---
+
+## Executive Summary
+
+This portfolio demonstrates a systematic refactoring of a pricing service from monolithic architecture to clean, layered design. The original v0 implementation—a 90-line HTTP handler coupling six distinct responsibilities—contained seven quality gaps creating financial mispricing risk, weak testability, and high maintenance cost. Through deliberate architectural decisions (Service Layer, Repository Pattern, Strategy Pattern, and Dependency Injection), the refactored v1 achieves 99% code coverage across 90 tests, established clear architectural boundaries, and made business rules independently modifiable. The project illustrates how quality improvement stems not from pattern proliferation but from precise diagnosis of coupling, followed by minimal architectural intervention. All evidence—design decisions, test suite, architectural diagrams, and the pricing anomaly evidence—is present in the accompanying repository and embedded figures, providing reproducible proof of the refactoring's effectiveness.
 
 ---
 
