@@ -4,7 +4,7 @@
 **Student Name:** Astha Malviya  
 **Project Title:** QuickQuote Pricing API: v0 to v1 Refactoring  
 **Date:** August 2026  
-**Word Count:** 3,261 words (Main Report Sections 1–5 only; excludes References and Appendices per university guidelines)
+**Word Count:** 3,950 words (Main Report Sections 1–5 only; excludes References and Appendices per university guidelines)
 
 ---
 
@@ -31,6 +31,8 @@ The QuickQuote pricing service v0 exemplifies architectural debt. The `/quote` r
 The Software Engineering Institute (SEI) defines this as technical debt: the cost accrued by choosing an expedient solution now that increases future effort and risk. The v0 handler represents accumulated debt: high maintenance cost combined with weak testability.
 
 The case for improvement is evidence-based. The v0 design creates financial mispricing risk, regression risk, operational constraints, and increasing maintenance cost. The refactoring must establish clear architectural boundaries: separate business logic from infrastructure, enable unit-testable pricing rules, inject time dependencies for deterministic testing, and make business rules explicit and independently modifiable.
+
+**Key Insight:** The seven gaps are not independent failures but symptoms of a single root cause: monolithic architecture. A single 90-line function cannot be the unit of change, testing, or understanding. Fixing one gap in isolation (e.g., adding input validation) without addressing the architecture leaves the others intact. The refactoring strategy therefore focuses on decomposing the monolith into distinct responsibilities, each independently testable and modifiable.
 
 ---
 
@@ -68,6 +70,10 @@ v0 embeds plan selection, discounts, and tax as hardcoded conditionals. v1 makes
 v0 calls `datetime.now()` directly, making pro-rata calculations non-deterministic. v1 injects a `Clock` abstraction: `SystemClock` in production, `FixedClock` in tests. Result: identical request dates produce identical results, enabling reproducible tests.
 
 These decisions are interconnected. Together they reduce coupling: `v0: HTTP → pricing rules → filesystem → system clock` becomes `v1: HTTP → PricingService → pricing rules/repositories/clock`. The consequence is testability. Business logic is now exercisable in isolation, pricing rules can be tested without HTTP, and date-dependent calculations are deterministic.
+
+**Design Coherence:** Each pattern addresses a specific gap, but their interaction is the design's strength. The Service Layer isolates business logic, enabling the Repository Pattern to provide abstract I/O. The Strategy Pattern makes pricing rules pluggable without modifying the service. Clock injection makes time testable. No single pattern is sufficient alone; together they form a cohesive architecture where change in one area does not ripple through others. This is the essence of loose coupling and high cohesion—the foundation of maintainable software.
+
+**Trade-offs Accepted:** v1 is longer (252 lines vs 106 lines), requires more infrastructure code, and demands more upfront design. For a monolithic service, this overhead is unjustified. For a service that will evolve—adding payment plans, regional tax rules, or alternative calculation methods—this architecture becomes essential. The refactoring assumes the pricing service will change. If it won't, v0's simplicity would suffice.
 
 ---
 
@@ -134,6 +140,10 @@ Communication was structured around evidence and professional standards.
 - **Testing Discipline:** Layered pyramid (unit → service → integration), characterisation testing, Boundary Value Analysis, deterministic time injection.
 - **Code Quality:** Service function 48 lines (vs v0's 88-line handler). Business rules explicit. Magic numbers eliminated.
 - **Professional Honesty:** Limitations declared upfront (concurrency untested, file-based scalability constraints, unresolved pricing policy). Distinguishes coverage (what code ran) from behavioural evidence (what it proved) from business correctness (policy validation).
+
+**Avoiding Common Pitfalls:** The project deliberately rejects over-engineering. Abstract Factory was considered for configuration management but not introduced, as Pydantic models already provide validation. Observer pattern was rejected for invoice notification because a single synchronous client does not warrant event decoupling. Builder was not used because Pydantic dataclasses handle request construction. These non-decisions reflect a principle: adopt patterns when they solve actual problems, not to demonstrate pattern knowledge. This discipline distinguishes professional architecture from architectural theater.
+
+**Evidence-Driven Claims:** Rather than claiming "better design" in abstract terms, the refactoring presents concrete evidence: coupling measured by responsibility distribution (v0: 6 concerns in 90 lines vs v1: 6 concerns in 6 components), testability measured by testing boundary (v0: integration-only vs v1: unit+service+integration), and quality measured by test results (90 tests, 0.21s execution, 99% coverage). This approach moves beyond opinion toward verifiable technical facts.
 
 ---
 
